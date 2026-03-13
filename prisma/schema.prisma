@@ -10,3 +10,14 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Portfolio {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  coinSymbol String   @map("coin_symbol")
+  amount     String
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("portfolios")
+}
