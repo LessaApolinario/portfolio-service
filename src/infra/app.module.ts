@@ -4,6 +4,7 @@ import { DatabaseModule } from './database/database.module';
 import { envSchema } from './env/env';
 import { EnvModule } from './env/env.module';
 import { PortfolioModule } from './portfolio/portfolio.module';
+import { TransactionModule } from './transaction/transaction.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { PortfolioModule } from './portfolio/portfolio.module';
     EnvModule,
     DatabaseModule,
     PortfolioModule,
+    TransactionModule,
   ],
 })
 export class AppModule {}
