@@ -49,9 +49,9 @@ export class PrismaPortfolioRepository extends PortfolioAdapter {
     return PrismaPortfolioMapper.toModel(updatedPortfolio);
   }
 
-  async deleteByUserIdAndSymbol(userId: string, symbol: string): Promise<void> {
-    await this.prismaService.portfolio.deleteMany({
-      where: { userId, coinSymbol: symbol },
+  async remove(id: string): Promise<void> {
+    await this.prismaService.portfolio.delete({
+      where: { id },
     });
   }
 }

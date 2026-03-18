@@ -9,8 +9,5 @@ export abstract class PortfolioUseCase {
   ): Promise<Portfolio | null>;
   abstract create(data: CreatePortfolioRequest): Promise<Portfolio>;
   abstract updateAmount(id: string, amount: number): Promise<Portfolio>;
-  abstract deleteByUserIdAndSymbol(
-    userId: string,
-    symbol: string,
-  ): Promise<void>;
+  abstract remove(id: string): Promise<void>;
 }

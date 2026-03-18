@@ -29,7 +29,7 @@ export class PortfolioService extends PortfolioUseCase {
     return this.portfolioAdapter.updateAmount(id, amount);
   }
 
-  deleteByUserIdAndSymbol(userId: string, symbol: string): Promise<void> {
-    return this.portfolioAdapter.deleteByUserIdAndSymbol(userId, symbol);
+  remove(id: string): Promise<void> {
+    return this.portfolioAdapter.remove(id);
   }
 }

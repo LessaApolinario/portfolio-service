@@ -13,8 +13,8 @@ export class PrismaTransactionMapper {
       type: PrismaTransactionType[String(transaction.type)],
       amount: transaction.amount.toNumber(),
       price: transaction.price.toNumber(),
-      created_at: transaction.createdAt.toDateString(),
-      updated_at: transaction.updatedAt.toDateString(),
+      created_at: transaction.createdAt.toLocaleString(),
+      updated_at: transaction.updatedAt.toLocaleString(),
     };
   }
 }

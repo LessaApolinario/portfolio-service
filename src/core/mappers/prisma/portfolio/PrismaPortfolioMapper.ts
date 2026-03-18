@@ -8,8 +8,8 @@ export class PrismaPortfolioMapper {
       user_id: portfolio.userId,
       coin_symbol: portfolio.coinSymbol,
       amount: portfolio.amount.toNumber(),
-      created_at: portfolio.createdAt.toDateString(),
-      updated_at: portfolio.updatedAt.toDateString(),
+      created_at: portfolio.createdAt.toLocaleString(),
+      updated_at: portfolio.updatedAt.toLocaleString(),
     };
   }
 }
