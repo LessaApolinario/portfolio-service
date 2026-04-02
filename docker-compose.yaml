@@ -1,4 +1,23 @@
 services:
+  portfolio-service-backend:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile.main
+      args:
+        - NODE_VERSION=${NODE_VERSION:-24-alpine}
+        - PORT=${PORT:-3000}
+    container_name: portfolio-service-backend
+    restart: always
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    env_file:
+      - .env
+    depends_on:
+      - portfolio-service-backend-database
+    networks:
+      - portfolio-service-network
+      - crypto-bff-network
+
   portfolio-service-backend-database:
     image: postgres:17-alpine
     restart: always
@@ -8,14 +27,14 @@ services:
     env_file:
       - .env
     volumes:
-      - ./data/pg:/var/lib/postgresql/data
-  portfolio-service-backend:
-    build: .
-    container_name: portfolio-service-backend
-    restart: always
-    ports:
-      - "2390:${PORT-3000}"
-    env_file:
-      - .env
-    depends_on:
-      - portfolio-service-backend-database
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - portfolio-service-network
+
+volumes:
+  pg_data:
+
+networks:
+  portfolio-service-network:
+  crypto-bff-network:
+    external: true
